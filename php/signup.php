@@ -277,7 +277,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                             <div class="mb-3 form-check">
                                 <input type="checkbox" class="form-check-input" name="termsCheck" id="termsCheck">
-                                <label class="form-check-label" for="termsCheck">I have read and agree to the <a href="">Terms of Service</a></label>
+                                <label class="form-check-label" for="termsCheck">I have read and agree to the <a href="../termsandconditions.html">Terms of Service</a></label>
                             </div>
                             <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
                         </form>

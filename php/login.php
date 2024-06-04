@@ -1,4 +1,10 @@
 <?php
+if(isset($_GET['title'])){
+    $pageTitle = $_GET['title'];
+}else{
+    $pageTitle = '';
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require "../files/_dbconnect.php";
     $username = $_POST['signupUsername'];
@@ -224,12 +230,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <span class="fs-4">I Calculate Math AI</span>
                 </a>
             </header>
-            <!-- position-absolute top-50 start-50 translate-middle -->
+            <?php
+                    if ($pageTitle == 'askai') {
+                        echo '
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                        <div><strong>Warning!</strong> You have to login before use this feature.</div>   
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        </button>
+                        </div>
+                        ';
+                    }
+                    ?>
             <div class="container-xxl">
                 <div class="card">
                     <div class="card-body">
                         <form method="post" action="login.php" id="login">
-                            <h2>Sign up</h2>
+                            <h2>Login</h2>
                             <div class="mb-3">
                                 <label for="signupUsername" id="usernameLable" class="form-label">Username</label>
                                 <div class="input-group">
@@ -242,6 +258,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="password" class="form-control" name="loginPassword" id="loginPassword">
                             </div>
                             <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
+                            <div id="emailGuid" class="form-text">Don't have account <a href="signup.php" style="text-decoration: none;">Regester here.</a></div>
+
                         </form>
                     </div>
                 </div>
@@ -266,13 +284,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         var passwordLable = document.getElementById('passwordLable');
         var form = document.querySelector('#login');
         form.addEventListener('submit', function(e) {
-            if (username.value == "a" || username.value.length < 5 || username.value.length > 15) {
+            if (username.value == "" || username.value.length < 5 || username.value.length > 15) {
                 usernameLable.innerHTML = "Username can't be empty or less then 5 characters";
                 username.classList.add('is-invalid');
                 usernameLable.classList.add('text-danger');
                 e.preventDefault();
-            } else if (pass.value.length < 8) {
-                passwordLable.innerHTML = "Password must have atleast 8 characters!";
+            }else if (pass.value == "") {
+                passwordLable.innerHTML = "Password can't be empty";
                 pass.classList.add('is-invalid');
                 passwordLable.classList.add('text-danger');
                 e.preventDefault();
