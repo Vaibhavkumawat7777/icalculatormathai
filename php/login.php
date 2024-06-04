@@ -16,8 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($num > 0) {
             while($row = mysqli_fetch_assoc($result)){
                 if(password_verify($password, $row['password']) == true){
+                    session_start();
+                    $_SESSION['login'] = true;
+                    $_SESSION['username'] = $username;
                     header('Location: ../web/dashboard.php');
                 } else {
+                    echo 'invalid pass';
                 }
             }
         } else {

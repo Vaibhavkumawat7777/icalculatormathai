@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 ?>
 
 <!doctype html>
@@ -124,6 +126,29 @@
                             </svg>
                             <span class="fs-4">I Calculate Math AI</span>
                         </a>
+                        <?php
+                        if ($_SESSION['login'] == false && !isset($_SESSION['username'])){
+                            echo '
+
+                        <ul class="nav nav-tabs">
+                          <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="">Welcome</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="web/forum.php">Forum</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="php/login.php?title=askai">Ask to AI</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="php/signup.php">Sign up</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="php/login.php">Login</a>
+                          </li>
+                        </ul>';
+                        }else{
+                            echo '
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="">Welcome</a>
@@ -134,7 +159,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="profile.php">Profile</a>
                             </li>
-                        </ul>
+                        </ul>';
+                        }
+                        ?>
                     </div>
                 </nav>
             </header>

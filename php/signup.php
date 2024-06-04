@@ -22,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $sql = "INSERT INTO `sign_up` (`username`, `email`, `password`, `dt`) VALUES ('$username', '$email', '$password', current_timestamp())";
             $result = mysqli_query($connection, $sql);
             if ($result) {
+                session_start();
+                $_SESSION['username'] = $username;
+                $_SESSION['login'] = true;
                 header('Location: ../web/dashboard.php');
             } else {
                 header('Location: ' . $_SERVER['PHP_SELF']);
