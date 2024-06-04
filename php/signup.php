@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require "../files/_dbconnect.php";
     $email = $_POST['signupEmail'];
     $username = $_POST['signupUsername'];
-    $password = password_hash($_POST['signupEmail'], PASSWORD_DEFAULT);
+    $password = password_hash($_POST['signupPassword'], PASSWORD_DEFAULT);
     if (isset($email)) {
         $sql = "SELECT * FROM `sign_up` WHERE `username` = '$username'";
         $result = mysqli_query($connection, $sql);

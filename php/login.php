@@ -9,10 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $num = mysqli_num_rows($result);
         if ($num > 0) {
             while($row = mysqli_fetch_assoc($result)){
-                if(password_verify($password, $row['password'])){
+                if(password_verify($password, $row['password']) == true){
                     header('Location: ../web/dashboard.php');
                 } else {
-                    echo "invalid pass ";
                 }
             }
         } else {
