@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!doctype html>
@@ -127,37 +126,40 @@ session_start();
                             <span class="fs-4">I Calculate Math AI</span>
                         </a>
                         <?php
-                        if ($_SESSION['login'] == false && !isset($_SESSION['username'])){
+                        if (!isset($_SESSION['login'])  && !isset($_SESSION['username'])){
                             echo '
 
                         <ul class="nav nav-tabs">
                           <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="">Welcome</a>
+                            <a class="nav-link" aria-current="page" href="/">Welcome</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="web/forum.php">Forum</a>
+                            <a class="nav-link active" href="">Forum</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="php/login.php?title=askai">Ask to AI</a>
+                            <a class="nav-link" href="../php/login.php?title=askai">Ask to AI</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="php/signup.php">Sign up</a>
+                            <a class="nav-link" href="../php/signup.php">Sign up</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="php/login.php">Login</a>
+                            <a class="nav-link" href="../php/login.php">Login</a>
                           </li>
                         </ul>';
                         }else{
                             echo '
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Welcome</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="dashboard.php">Dashboard</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="">Forum - ' . $_SESSION['username'] . '</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="profile.php">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../php/logout.php">Logout</a>
                             </li>
                         </ul>';
                         }

@@ -1,6 +1,25 @@
 <?php
+session_start();
+if (!isset($_SESSION['login'])  && !isset($_SESSION['username'])){
+    header('location: /');
+}else{
+    $showNavbar = '
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="">Dashboard - ' . $_SESSION['username'] . '</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="forum.php">Forum</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="profile.php">Profile</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="../php/logout.php">Logout</a>
+    </li>
+</ul>';
+}
 ?>
-
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 
@@ -124,17 +143,9 @@
                             </svg>
                             <span class="fs-4">I Calculate Math AI</span>
                         </a>
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="">Welcome</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="forum.php">Forum</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="profile.php">Profile</a>
-                            </li>
-                        </ul>
+                        <?php
+                        echo $showNavbar;
+                        ?>
                     </div>
                 </nav>
             </header>
