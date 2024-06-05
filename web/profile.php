@@ -1,7 +1,8 @@
 <?php
 session_start();
-$_SESSION['username'] = 'vaibhav';
-$_SESSION['login'] = true;
+if (!isset($_SESSION['login'])  && !isset($_SESSION['username'])){
+    header('location: /');
+}
 ?>
 
 <!doctype html>
@@ -15,7 +16,7 @@ $_SESSION['login'] = true;
     <meta name="description" content="">
     <meta name="author" content="Vaibhav Kumawat">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>I Calculate Math AI</title>
+    <title>Profile - <?php echo $_SESSION['username']; ?></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
 

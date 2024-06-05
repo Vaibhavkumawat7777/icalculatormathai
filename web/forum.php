@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('../files/_dbconnect.php');
 ?>
 
 <!doctype html>
@@ -167,7 +168,34 @@ session_start();
                     </div>
                 </nav>
             </header>
-
+            <!-- <nav class="navbar bg-body-tertiary"> -->
+              <div class="container-fluid">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            <!-- </nav> -->
+            <div class='row'>
+                <?php
+                    $sql = '';
+                    $result = mysqli_query($connection,$sql);
+                    $num = mysqli_num_rows($result);
+                    while($row = mysqli_fetch_assoc($result)){
+                        echo '
+            <div class="card m-5" style="width: 18rem;">
+              <img src="https://source.unsplash.com/random/300x300/?Python,Code" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card/s content
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>';
+                    }
+                }
+            ?>
+            </div>
             <footer class="pt-3 mt-4 text-body-secondary border-top">
                 &copy; 2024 Owner - Vaibhav Kumawat
             </footer>
