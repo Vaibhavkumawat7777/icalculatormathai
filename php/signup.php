@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($connection, $sql);
         $num = mysqli_num_rows($result);
         if ($num > 0) {
-            echo 'error';
             header('Location: ' . $_SERVER['PHP_SELF'] . '?er=true');
         } else {
             $sql = "INSERT INTO `sign_up` (`username`, `email`, `password`, `dt`) VALUES ('$username', '$email', '$password', current_timestamp())";
@@ -243,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php
                     if ($usernameExist == 'true') {
                         echo '
-                        <div class="alert alert-success alert-dismissible" role="alert">
+                        <div class="alert alert-warning alert-dismissible" role="alert">
                         <div><strong>Warning!</strong> This username is already selected, please choose otherone.</div>   
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
                         </button>

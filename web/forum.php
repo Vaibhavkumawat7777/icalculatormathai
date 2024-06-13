@@ -177,7 +177,7 @@ include('../files/_dbconnect.php');
               </div>
             <!-- </nav> -->
             <div class='row'>
-                <?php
+                <!-- <?php
                     $sql = '';
                     $result = mysqli_query($connection,$sql);
                     $num = mysqli_num_rows($result);
@@ -193,8 +193,8 @@ include('../files/_dbconnect.php');
               </div>
             </div>';
                     }
-                }
-            ?>
+                
+            ?> -->
             </div>
             <footer class="pt-3 mt-4 text-body-secondary border-top">
                 &copy; 2024 Owner - Vaibhav Kumawat
